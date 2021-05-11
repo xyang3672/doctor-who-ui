@@ -164,7 +164,7 @@ const edit = (doctor,id) =>  {
                 const errorElement = document.getElementById('error')
                 const DocName = document.getElementById('name').value
                 const seasons = document.getElementById('seasons').value.split(',')
-                const ordering = document.getElementById('ordering').value
+                let ordering = document.getElementById('ordering').value
                 const image_url = document.getElementById('image_url').value
                 let valid = true
                 if (DocName == '') {
@@ -177,6 +177,9 @@ const edit = (doctor,id) =>  {
                         return valid = false
                     }
                 })
+                if (!ordering) {
+                    ordering = " "
+                }
                 const data = {
                     name: DocName,
                     seasons: seasons,
@@ -294,11 +297,11 @@ document.getElementById("add").addEventListener("click", function() {
     // send to database 
     const create = ev => {
         ev.preventDefault()
-        const errorElement = document.getElementById('error')
-        const DocName = document.getElementById('name').value
-        const seasons = document.getElementById('seasons').value.split(',')
-        const ordering = document.getElementById('ordering').value
-        const image_url = document.getElementById('image_url').value
+        let errorElement = document.getElementById('error')
+        let DocName = document.getElementById('name').value
+        let seasons = document.getElementById('seasons').value.split(',')
+        let ordering = document.getElementById('ordering').value
+        let image_url = document.getElementById('image_url').value
         let valid = true
         if (DocName == '') {
             errorElement.innerText = 'Name is required';
@@ -310,6 +313,9 @@ document.getElementById("add").addEventListener("click", function() {
                 return valid = false
             }
         })
+        if (!ordering){
+            ordering = " "
+        }
         const data = {
             name: DocName,
             seasons: seasons,
